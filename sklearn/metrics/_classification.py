@@ -226,7 +226,7 @@ def accuracy_score(y_true, y_pred, *, normalize=True, sample_weight=None):
     else:
         score = y_true == y_pred
 
-    return _weighted_sum(score, sample_weight, normalize)
+    return _weighted_sum(score, sample_weight, normalize), y_true, y_pred
 
 
 def confusion_matrix(
@@ -1284,7 +1284,7 @@ def fbeta_score(
     array([0.71..., 0.        , 0.        ])
     """
 
-    _, _, f, _ = precision_recall_fscore_support(
+    precision, recall, f, true_sum = precision_recall_fscore_support(
         y_true,
         y_pred,
         beta=beta,
@@ -1295,7 +1295,7 @@ def fbeta_score(
         sample_weight=sample_weight,
         zero_division=zero_division,
     )
-    return f
+    return precision, recall, f, true_sum
 
 
 def _prf_divide(

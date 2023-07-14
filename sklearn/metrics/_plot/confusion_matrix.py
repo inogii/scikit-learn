@@ -133,9 +133,9 @@ class ConfusionMatrixDisplay:
         import matplotlib.pyplot as plt
 
         if ax is None:
-            fig, ax = plt.subplots()
+            fig, ax = plt.subplots(figsize=(30, 30))
         else:
-            fig = ax.figure
+            fig = ax.figure()
 
         cm = self.confusion_matrix
         n_classes = cm.shape[0]
