@@ -89,6 +89,7 @@ class ConfusionMatrixDisplay:
         colorbar=True,
         im_kw=None,
         text_kw=None,
+        size=20
     ):
         """Plot visualization.
 
@@ -133,7 +134,7 @@ class ConfusionMatrixDisplay:
         import matplotlib.pyplot as plt
 
         if ax is None:
-            fig, ax = plt.subplots(figsize=(30, 30))
+            fig, ax = plt.subplots(figsize=(size, size))
         else:
             fig = ax.figure()
 
