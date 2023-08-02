@@ -2,10 +2,10 @@ from itertools import product
 
 import numpy as np
 
-from ...base import is_classifier
+from .. import confusion_matrix
 from ...utils import check_matplotlib_support
 from ...utils.multiclass import unique_labels
-from .. import confusion_matrix
+from ...base import is_classifier
 
 
 class ConfusionMatrixDisplay:
@@ -89,6 +89,7 @@ class ConfusionMatrixDisplay:
         colorbar=True,
         im_kw=None,
         text_kw=None,
+        size=20
     ):
         """Plot visualization.
 
@@ -133,9 +134,9 @@ class ConfusionMatrixDisplay:
         import matplotlib.pyplot as plt
 
         if ax is None:
-            fig, ax = plt.subplots()
+            fig, ax = plt.subplots(figsize=(30, 30))
         else:
-            fig = ax.figure
+            fig = ax.figure()
 
         cm = self.confusion_matrix
         n_classes = cm.shape[0]
